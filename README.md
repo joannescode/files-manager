@@ -3,7 +3,7 @@
 Hey, necessity manager your files? Use this tool from organized and move files from diverse extensions.
 
 ## How use:
-- First, using `git clone git@gitlab.com:learning-with-python-projects/files-manager.git` command in your terminal.
+- First, using `git clone git@github.com:joannescode/files-manager.git` command in your terminal.
 - Second, open `main.py` file and in "path" pass your path where files is found:
 
 ![Main.py](images/main.svg)
