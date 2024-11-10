@@ -7,10 +7,29 @@ logging.basicConfig(format="%(asctime)s:%(levelname)s:%(message)s", level=loggin
 
 
 def file_path(path):
+    """
+    Lists all files and directories in a specified path.
+
+    Args:
+        path (str): The directory path to list contents.
+
+    Returns:
+        list: A list of file and directory names in the specified path.
+    """
     return os.listdir(path)
 
 
 def reading_json():
+    """
+    Reads a JSON file named 'extensions.json' located in the same directory as the script.
+
+    Returns:
+        dict: Parsed JSON data as a dictionary containing file extensions categorized by type.
+
+    Raises:
+        FileNotFoundError: If 'extensions.json' is not found in the directory.
+        json.JSONDecodeError: If the JSON file is improperly formatted.
+    """
     dir_path = os.path.dirname(os.path.realpath(__file__))
     json_path = os.path.join(dir_path, "extensions.json")
     with open(json_path, "r") as f:
@@ -18,6 +37,21 @@ def reading_json():
 
 
 def folder_per_extension(file_name, path, extension_mapping):
+    """
+    Organizes files into folders based on their file extensions.
+
+    Args:
+        file_name (str): The name of the file to organize.
+        path (str): The base directory where the file is located.
+        extension_mapping (dict): A dictionary mapping file categories to lists of extensions.
+
+    Moves the file to a folder categorized by its extension. If the extension is not recognized, 
+    the file is moved to an 'others' folder. Logs an error if file movement fails.
+    
+    Raises:
+        shutil.Error: If an error occurs while moving the file.
+        OSError: If an error occurs while creating directories or handling file extensions.
+    """
     extension = os.path.splitext(file_name)[1][1:]
 
     folder_name = None
